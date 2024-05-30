@@ -1,0 +1,89 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="http://services.xyzclinic.com/medicalRecords"
+           xmlns:tns="http://services.xyzclinic.com/medicalRecords">
+    <xs:complexType name="MedicalRecordDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="patientId" type="xs:long"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="createdAt" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getMedicalRecordsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getMedicalRecordsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecords" type="tns:MedicalRecordDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMedicalRecordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecordId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getMedicalRecordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecord" type="tns:MedicalRecordDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addMedicalRecordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecord" type="tns:MedicalRecordDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addMedicalRecordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecordId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateMedicalRecordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecord" type="tns:MedicalRecordDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateMedicalRecordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMedicalRecordRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalRecordId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteMedicalRecordResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
